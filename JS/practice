@@ -1,0 +1,78 @@
+// Flights
+document.querySelectorAll('a[href*="flights"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Get the href of the link
+    const href = link.href;
+    // Make an AJAX request to the href
+    fetch(href)
+      .then(response => response.json())
+      .then(data => {
+        // Create a new HTML element for each flight
+        const flights = data.map(flight => `
+          <div class="flight">
+            <h3>${flight.name}</h3>
+            <p>${flight.price}</p>
+            <p>${flight.departure_city}</p>
+            <p>${flight.arrival_city}</p>
+            <p>${flight.departure_date}</p>
+            <p>${flight.arrival_date}</p>
+          </div>
+        `);
+        // Append the flights to the DOM
+        document.querySelector('.flights').innerHTML = flights.join('');
+      });
+  });
+});
+
+// Hotels
+document.querySelectorAll('a[href*="hotels"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Get the href of the link
+    const href = link.href;
+    // Make an AJAX request to the href
+    fetch(href)
+      .then(response => response.json())
+      .then(data => {
+        // Create a new HTML element for each hotel
+        const hotels = data.map(hotel => `
+          <div class="hotel">
+            <h3>${hotel.name}</h3>
+            <p>${hotel.price}</p>
+            <p>${hotel.city}</p>
+            <p>${hotel.star_rating}</p>
+            <p>${hotel.amenities}</p>
+          </div>
+        `);
+        // Append the hotels to the DOM
+        document.querySelector('.hotels').innerHTML = hotels.join('');
+      });
+  });
+});
+
+// Packages
+document.querySelectorAll('a[href*="packages"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    // Get the href of the link
+    const href = link.href;
+    // Make an AJAX request to the href
+    fetch(href)
+      .then(response => response.json())
+      .then(data => {
+        // Create a new HTML element for each package
+        const packages = data.map(package => `
+          <div class="package">
+            <h3>${package.name}</h3>
+            <p>${package.price}</p>
+            <p>${package.destination_city}</p>
+            <p>${package.length_of_stay}</p>
+            <p>${package.activities}</p>
+          </div>
+        `);
+        // Append the packages to the DOM
+        document.querySelector('.packages').innerHTML = packages.join('');
+      });
+  });
+});
