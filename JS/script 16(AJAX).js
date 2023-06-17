@@ -67,7 +67,7 @@ function loadData(){
 
 document.getElementById('get_data2').addEventListener('click', loadJokes);
 
-var arr=[];
+var arr=[], arr2=[];
 var n=0;
 
 function loadJokes(e){
@@ -77,7 +77,7 @@ function loadJokes(e){
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'https://api.chucknorris.io/jokes/random' ,true);
+    xhr.open('GET', 'https://api.chucknorris.io/jokes/random/' ,true);
     let xhr2 = new XMLHttpRequest();
 
     xhr2.open('GET', `https://api.chucknorris.io/jokes/search?query=${searchData}` ,true);
@@ -107,15 +107,22 @@ function loadJokes(e){
             let data = JSON.parse(this.responseText);
             console.log(data);
             let joke = data.value;
+            console.log(joke);
 
-            arr[n++] = joke;
+            arr2[n++] = joke;
 
 
             let output = "<ol>";
-            arr.forEach(element => {
+
+            arr2.forEach(element => {
                 console.log(element);
-                //output+= `<li>`
+                output+= `<li>${element}</li>`;
             });
+
+            output += "</ol>";
+
+            document.getElementById('output2').innerHTML = output;
+            
 
             console.log(joke);
         }
@@ -124,4 +131,5 @@ function loadJokes(e){
 }
 
 
-// 19:24 sec              
+// 19:24 sec  
+// Access to jokes array value is not working... Have to find it.            
