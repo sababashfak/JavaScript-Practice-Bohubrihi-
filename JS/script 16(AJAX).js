@@ -106,7 +106,7 @@ function loadJokes(e){
         if (this.status === 200){
             let data = JSON.parse(this.responseText);
             console.log(data);
-            let joke = data.value;
+            let joke = data.result.value;
             console.log(joke);
 
             arr2[n++] = joke;
